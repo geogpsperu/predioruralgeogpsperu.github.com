@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 451px;
+            height: 595px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Departamentos_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-18.77302309645045,-82.22201738760216],[0.4549147620495475,-67.66325836826573]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_CartoDarkWithout_0');
+        map.getPane('pane_CartoDarkWithout_0').style.zIndex = 400;
+        var layer_CartoDarkWithout_0 = L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png', {
+            pane: 'pane_CartoDarkWithout_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_CartoDarkWithout_0;
+        map.addLayer(layer_CartoDarkWithout_0);
+        function pop_Departamentos_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Departamento:</th>\
+                        <td>' + (feature.properties['nombdep'] !== null ? autolinker.link(feature.properties['nombdep'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Contacto:</th>\
+                        <td>' + (feature.properties['Contacto'] !== null ? autolinker.link(feature.properties['Contacto'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CENEPRED:</th>\
+                        <td>' + (feature.properties['RURAL'] !== null ? autolinker.link(feature.properties['RURAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GEORURAL:</th>\
+                        <td>' + (feature.properties['GEORURAL'] !== null ? autolinker.link(feature.properties['GEORURAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Departamentos_1_0(feature) {
+            switch(String(feature.properties['nombdep'])) {
+                case 'AMAZONAS':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,178,58,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'ANCASH':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(142,227,24,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'APURIMAC':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(97,195,204,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'AREQUIPA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,134,115,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'AYACUCHO':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,116,47,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'CAJAMARCA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(50,227,26,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'CALLAO':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,238,40,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'CUSCO':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(111,160,228,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'HUANCAVELICA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(180,128,224,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'HUANUCO':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(55,202,143,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'ICA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,41,225,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'JUNIN':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,84,86,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LA LIBERTAD':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(207,109,183,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LAMBAYEQUE':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,207,105,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LIMA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,35,224,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LORETO':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(24,238,206,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'MADRE DE DIOS':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,59,98,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'MOQUEGUA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,236,132,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'PASCO':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,212,44,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'PIURA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(20,145,212,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'PUNO':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,232,64,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'SAN MARTIN':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,14,119,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'TACNA':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(32,69,233,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'TUMBES':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(156,127,223,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'UCAYALI':
+                    return {
+                pane: 'pane_Departamentos_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(184,109,205,0.636)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Departamentos_1');
+        map.getPane('pane_Departamentos_1').style.zIndex = 401;
+        map.getPane('pane_Departamentos_1').style['mix-blend-mode'] = 'normal';
+        var layer_Departamentos_1 = new L.geoJson(json_Departamentos_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Departamentos_1',
+            layerName: 'layer_Departamentos_1',
+            pane: 'pane_Departamentos_1',
+            onEachFeature: pop_Departamentos_1,
+            style: style_Departamentos_1_0,
+        });
+        bounds_group.addLayer(layer_Departamentos_1);
+        map.addLayer(layer_Departamentos_1);
+        setBounds();
+        </script>
+    </body>
+</html>
